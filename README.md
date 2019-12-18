@@ -1,4 +1,4 @@
-# Traffic-Signs-Classificator coursework
+# Traffic Signs Classification coursework
 Referal to https://www.pyimagesearch.com/2019/11/04/traffic-sign-classification-with-keras-and-deep-learning/
 
 Dataset http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset
