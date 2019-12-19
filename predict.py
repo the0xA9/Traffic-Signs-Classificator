@@ -1,14 +1,11 @@
 # import the necessary packages
-from tensorflow.keras.models import load_model
+# from tensorflow.keras.models import load_model
 from skimage import transform
 from skimage import exposure
 from skimage import io
 import numpy as np
 
-def makePrediction():
-    # load the traffic sign recognizer model
-    # print("[INFO] loading model...")
-    model = load_model("trafficsignnet.model")
+def makePrediction(model):
 
     # load the label names
     dictionary = open("signnames.csv").read().strip().split("\n")[1:]

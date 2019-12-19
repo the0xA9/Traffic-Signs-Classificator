@@ -1,7 +1,11 @@
 from telegram.ext import Updater, CommandHandler, Filters, MessageHandler
 from predict import makePrediction
+from tensorflow.keras.models import load_model
 
-BOT_TOKEN = "1017748021:AAEwedzebtXBG7HqrOLESyxnSyB5Wp7CaB0"
+BOT_TOKEN = "1017748021:AAEbcprwYlWcabv-4jN4LKMYqvtZb-oX_Uo"
+
+# load the traffic sign recognizer model
+model = load_model("trafficsignnet.model")
 
 class TelegramBot:
     def __init__(self):
@@ -36,7 +40,7 @@ class TelegramBot:
         file = bot.getFile(update.message.photo[-1].file_id)
         print ("file_id: " + str(update.message.photo[-1].file_id))
         file.download('image/image.jpg')
-        detectedSign = makePrediction().split(",")
+        detectedSign = makePrediction(model).split(",")
         chat_id = update.message.chat_id
         retMsg = "Sign \"" + detectedSign[1] + "\" detected\nSignID: " + detectedSign[2]
         bot.sendMessage(chat_id=chat_id, text=retMsg)
@@ -44,3 +48,5 @@ class TelegramBot:
 if __name__ == '__main__':
     bot = TelegramBot()
     bot.start_bot()
+
+
